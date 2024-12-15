@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+import TextButton from '../components/TextButton.tsx';
 
 const cardData = [
   {
@@ -35,7 +36,7 @@ export default function FeaturesCardsSection() {
         <div className="mt-36 flex lg:mt-48">
           <div className="flex flex-none gap-8">
             {cardData.map(({image, title, description, color}) => (
-              <div className="relative z-0 p-8 md:p10 max-w-xs group md:max-w-md"
+              <div className="relative z-0 p-8 md:p-10 max-w-xs group md:max-w-md"
                    key={title}>
                 <div className={twMerge(
                   "absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300",
@@ -60,16 +61,10 @@ export default function FeaturesCardsSection() {
                     />
                   </div>
                 </div>
-                <h3 className="font-heading font-black text-3xl mt-12">{title}</h3>
+                <h3 className="font-heading font-black text-3xl mt-12 ">{title}</h3>
                 <p className="text-lg text-zinc-400 mt-4">{description}</p>
                 <div className="flex justify-between mt-12">
-                  <button className={twMerge(
-                    "text-sm font-heading uppercase text-fuchsia-500 font-extrabold tracking-wider",
-                    color === 'lime' && "text-lime-500",
-                    color === 'cyan' && "text-cyan-500",
-                    color === 'violet' && "text-violet-500",
-                  )}>Learn More
-                  </button>
+                  <TextButton color={color}>Learn more</TextButton>
                   <svg xmlns="http://www.w3.org/2000/svg"
                        fill="none"
                        viewBox="0 0 24 24"
