@@ -1,8 +1,40 @@
+import { useRef } from 'react';
 import Circle from '../components/Circle.tsx';
 import CutCornerButton from '../components/CutCornerButton.tsx';
 import Hexagon from '../components/Hexagon.tsx';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection() {
+  const icosahedronRef = useRef<HTMLDivElement>(null);
+  const cubeRef = useRef<HTMLImageElement>(null);
+  const torusRef = useRef<HTMLImageElement>(null);
+  const cuboidRef = useRef<HTMLImageElement>(null);
+
+  const {scrollYProgress: cuboidScrollYProgress} = useScroll({
+    target: cuboidRef,
+    offset: ["start end", "end start"],
+  })
+
+  const {scrollYProgress: cubeScrollYProgress} = useScroll({
+    target: cubeRef,
+    offset: ["start end", "end start"],
+  })
+
+  const {scrollYProgress} = useScroll({
+    target: icosahedronRef,
+    offset: ["start end", "end start"],
+  })
+
+  const {scrollYProgress: torusScrollYProgress} = useScroll({
+    target: torusRef,
+    offset: ["start end", "end start"],
+  })
+
+  const icosahedronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
+  const cubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
+  const torusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
+  const cuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
+
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container">
@@ -20,38 +52,65 @@ export default function HeroSection() {
               <Hexagon className="size-[1800px]"/>
             </div>
 
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
               <Circle className="absolute left-[200px] -top-[900px]">
-                <img src="/assets/images/cube.png"
-                     alt="Cube 3D model"
-                     className="size-[140px]"/>
+                <motion.img
+                  ref={cubeRef}
+                  src="/assets/images/cube.png"
+                  alt="Cube 3D model"
+                  className="size-[140px]"
+                  style={{
+                    rotate: cubeRotate,
+                  }}
+                />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] top-[270px]">
-                <img src="/assets/images/cuboid.png"
-                     alt="Cuboid 3D model"
-                     className="size-[140px]"
+                <motion.img
+                  ref={cuboidRef}
+                  style={{
+                    rotate: cuboidRotate
+                  }}
+                  src="/assets/images/cuboid.png"
+                  alt="Cuboid 3D model"
+                  className="size-[140px]"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute -left-[600px] -top-[80px]">
-                <img src="/assets/images/torus.png"
-                     alt="Torus 3D model"
-                     className="size-[140px]"
+                <motion.img
+                  ref={torusRef}
+                  style={{
+                    rotate: torusRotate
+                  }}
+                  src="/assets/images/torus.png"
+                  alt="Torus 3D model"
+                  className="size-[140px]"
                 />
               </Circle>
             </div>
 
-            <img src="/assets/images/icosahedron.png"
-                 alt=""
-                 className=" -z-10 absolute w-[calc(100%+100px)] max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-10 brightness-[5%] hue-rotate-[240deg]"/>
-            <img src="/assets/images/icosahedron.png"
-                 alt="Icosahedron 3D model"
-                 className="w-[500px]"/></div>
+            <motion.div
+              ref={icosahedronRef}
+              className="inline-flex"
+              style={{
+                rotate: icosahedronRotate
+              }}
+            >
+              <img src="/assets/images/icosahedron.png"
+                   alt=""
+                   className=" -z-10 absolute w-[calc(100%+100px)] max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-10 brightness-[5%] hue-rotate-[240deg]"/>
+              <img src="/assets/images/icosahedron.png"
+                   alt="Icosahedron 3D model"
+                   className="w-[500px]"/>
+            </motion.div>
+          </div>
         </div>
       </div>
 
