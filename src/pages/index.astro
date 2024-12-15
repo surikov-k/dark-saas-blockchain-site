@@ -6,6 +6,7 @@ import FeaturesCardsSection from "../sections/FeaturesCardsSection";
 import FeaturesGridSection from "../sections/FeaturesGridSection";
 import LatestPostsSection from '../sections/LatestPostsSection';
 import TestimonialSection from '../sections/TestimonialSection';
+import CallToActionSection from '../sections/CallToActionSection';
 
 import {getCollection} from 'astro:content';
 
@@ -23,4 +24,5 @@ const latestPosts = posts.slice(0, 4);
   <FeaturesGridSection/>
   <LatestPostsSection posts={latestPosts}/>
   <TestimonialSection/>
+  <CallToActionSection/>
 </DefaultLayout>
