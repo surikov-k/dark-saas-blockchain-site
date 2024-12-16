@@ -46,16 +46,17 @@ export default function HeroSection() {
         <div className="flex justify-center mt-24">
           <div className="inline-flex  relative z-0">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Hexagon className="size-[1100px]"/>
+              <Hexagon size={1100}/>
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Hexagon className="size-[1800px]"/>
+              <Hexagon size={1800} reverse duration={30}/>
             </div>
 
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             >
-              <Circle className="absolute left-[200px] -top-[900px]">
+              <Circle animate
+                      className="absolute left-[200px] -top-[900px]">
                 <motion.img
                   ref={cubeRef}
                   src="/assets/images/cube.png"
@@ -69,7 +70,7 @@ export default function HeroSection() {
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute left-[200px] top-[270px]">
+              <Circle animate className="absolute left-[200px] top-[270px]">
                 <motion.img
                   ref={cuboidRef}
                   style={{
@@ -116,7 +117,17 @@ export default function HeroSection() {
 
       <div className="flex justify-center flex-col gap-4 items-center mt-40 md:mt-80">
         <div className="inline-flex justify-center pt-2 rounded-full h-10 w-5 outline outline-[6px] outline-fuchsia-500/10">
-          <div className="h-3 w-1 bg-fuchsia-500 rounded-full"></div>
+          <motion.div
+            animate={{
+              translateY: 12,
+              opacity: 0.2
+            }}
+            transition={{
+              ease: "linear",
+              duration: 2,
+              repeat: Infinity
+            }}
+            className="h-3 w-1 bg-fuchsia-500 rounded-full"/>
         </div>
         <p className="uppercase text-zinc-500 font-extrabold tracking-wider">Scroll to learn more</p>
       </div>
