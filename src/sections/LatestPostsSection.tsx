@@ -1,9 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
+import { useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Card from '../components/Card.tsx';
 import CutCornerButton from '../components/CutCornerButton.tsx';
 import Tag from '../components/Tag.tsx';
 import { getPostColor } from '../utils/post-utils.ts';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface LatestPostsSectionProps {
   posts: CollectionEntry<'blog'>[]
@@ -11,6 +13,15 @@ interface LatestPostsSectionProps {
 
 
 export default function LatestPostsSection({posts}: LatestPostsSectionProps) {
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "start center"],
+  });
+
+  const marginTop = useTransform(scrollYProgress, [0, 1], [0, 64]);
+
   return (
     <section className="py-60">
       <div className="container">
@@ -35,7 +46,13 @@ export default function LatestPostsSection({posts}: LatestPostsSectionProps) {
               );
             })}
           </div>
-          <div className="hidden md:flex flex-col gap-8 mt-16">
+          <motion.div
+            ref={targetRef}
+            className="hidden md:flex flex-col gap-8"
+            style={{
+              marginTop
+            }}
+          >
             {posts.map(({data: {title, description, category}}, index) => {
               const color = getPostColor(category);
               return (
@@ -51,7 +68,7 @@ export default function LatestPostsSection({posts}: LatestPostsSectionProps) {
                 </Card>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         <div className="flex justify-center mt-48 md:mt-32">
