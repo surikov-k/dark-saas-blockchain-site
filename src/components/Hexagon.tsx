@@ -46,7 +46,7 @@ export default function Hexagon({size = 800, reverse = false, duration = 15, cla
         />
       </svg>
 
-      {totalPathLength && (
+      {!!totalPathLength && (
         < motion.svg width="82"
                      height="72"
                      viewBox="0 0 82 72"
