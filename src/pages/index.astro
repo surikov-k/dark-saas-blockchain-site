@@ -1,13 +1,10 @@
 ---
 import DefaultLayout from "../layouts/Default.astro";
-import HeaderSection from "../sections/Header";
 import HeroSection from "../sections/HeroSection";
 import FeaturesCardsSection from "../sections/FeaturesCardsSection";
 import FeaturesGridSection from "../sections/FeaturesGridSection";
 import LatestPostsSection from '../sections/LatestPostsSection';
-import TestimonialSection from '../sections/TestimonialSection';
-import CallToActionSection from '../sections/CallToActionSection';
-import Footer from '../sections/Footer';
+
 
 import { getCollection } from 'astro:content';
 
@@ -19,14 +16,10 @@ const latestPosts = posts.slice(0, 4);
 ---
 
 <DefaultLayout>
-  <HeaderSection client:load/>
   <HeroSection client:load/>
   <FeaturesCardsSection client:load/>
   <FeaturesGridSection client:load/>
   <LatestPostsSection
     posts={latestPosts}
     client:load/>
-  <TestimonialSection client:load/>
-  <CallToActionSection client:load/>
-  <Footer/>
 </DefaultLayout>

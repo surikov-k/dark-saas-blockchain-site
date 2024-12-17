@@ -8,8 +8,8 @@ interface CutCornerButtonProps {
 export default function CutCornerButton({className, children}: ComponentPropsWithoutRef<'button'>) {
   return (
     <button className={twMerge(
-      "relative bg-fuchsia-500/20 px-4 py-2 font-extrabold uppercase font-heading text-sm tracking-wide"
-      , className
+      "relative bg-fuchsia-500/20 hover:bg-fuchsia-500/40 px-4 pt-2.5 pb-2 font-extrabold uppercase font-heading text-sm tracking-wide transition duration-300",
+      className
     )}>
       <div className="absolute inset-0 outline outline-2 -outline-offset-2 outline-fuchsia-500
               [mask-image:linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
@@ -27,7 +27,7 @@ export default function CutCornerButton({className, children}: ComponentPropsWit
           strokeWidth="2"
         ></path>
       </svg>
-      <span className="leading-6">{children}</span>
+      <span className="leading-4">{children}</span>
     </button>
 
   );
