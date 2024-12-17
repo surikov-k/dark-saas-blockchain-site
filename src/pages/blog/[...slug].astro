@@ -1,18 +1,51 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-// import BlogPost from '../../layouts/BlogPost.astro';
-//
+import CutCornerButton from '../../components/CutCornerButton';
+import PostContent from '../../components/PostContent.astro';
+import PostHero from '../../components/PostHero.astro';
+import Tag from '../../components/Tag';
+import DefaultLayout from '../../layouts/Default.astro';
+import { getPostColor } from '../../utils/post-utils';
+
+type Props = CollectionEntry<'blog'>;
+
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const posts = await getCollection('blog');
+  return posts.map((post: Props) => ({
+    params: {slug: post.slug},
+    props: post,
+  }));
 }
-// type Props = CollectionEntry<'blog'>;
-//
-// const post = Astro.props;
-// const { Content } = await post.render();
+
+const post: Props = Astro.props;
+const {Content} = await post.render();
+
+const {data: {category, title, description, author}} = post;
+const color = getPostColor(category);
 ---
 
-<div>blog post</div>
+<DefaultLayout>
+  <PostHero>
+    <div class="relative">
+      <div class="flex justify-center">
+        <Tag color={color}>{category}</Tag>
+      </div>
+      <h1 class="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4">{title}</h1></div>
+    <p class="text-center text-xl md:text-2xl mt-8 text-zinc-400 max-w-2xl mx-auto">{description}</p>
+    <div class="flex flex-col  items-center mt-8">
+      <div class="size-16 rounded-full bg-zinc-700 bg-cover bg-center"></div>
+      <div class="font-extrabold text-lg mt-3">{author.name}</div>
+      <div class="text-zinc-500 ">{author.title}</div>
+    </div>
+
+  </PostHero>
+
+  <PostContent>
+    <div class="prose prose-invert prose-lg mx-auto prose-zinc
+    prose-headings:font-heading prose-headings:font-black
+    prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:lg:text-5xl
+    prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:lg:text-4xl">
+      <Content/>
+    </div>
+  </PostContent>
+</DefaultLayout>
