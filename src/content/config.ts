@@ -18,16 +18,17 @@ const blog = defineCollection({
 	}),
 });
 
-const careers = defineCollection({
+const positions = defineCollection({
 	type: "content",
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
 		category: z.string(),
+		pubDate: z.coerce.date(),
 		remote: z.boolean(),
 		type: z.string(),
 	}),
 });
 
-export const collections = { blog, careers };
+export const collections = { blog, positions };
 
