@@ -7,7 +7,7 @@ slug: "regulatory-challenges-facing-blockchain"
 author:
   name: "Alice Monroe"
   title: "Blockchain Analyst - ChainWave"
-  image: "/assets/images/alice.jpg"
+  image: "/assets/images/avatar-kyla-clay.jpg"
 ---
 
 ## Introduction to Regulatory Challenges

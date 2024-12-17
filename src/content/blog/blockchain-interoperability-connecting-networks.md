@@ -7,7 +7,7 @@ slug: "blockchain-interoperability-connecting-networks"
 author:
   name: "Emily Davis"
   title: "Lead Researcher - BlockLink"
-  image: "/assets/images/becky.jpg"
+  image: "/assets/images/avatar-erica-wyatt.jpg"
 ---
 
 ## Understanding Blockchain Interoperability

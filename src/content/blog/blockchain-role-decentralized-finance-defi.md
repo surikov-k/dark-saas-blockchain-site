@@ -7,7 +7,7 @@ slug: "blockchain-role-decentralized-finance-defi"
 author:
   name: "Alice Monroe"
   title: "Blockchain Analyst - ChainWave"
-  image: "/assets/images/alice.jpg"
+  image: "/assets/images/avatar-kyla-clay.jpg"
 ---
 
 ## Understanding the Basics of Blockchain

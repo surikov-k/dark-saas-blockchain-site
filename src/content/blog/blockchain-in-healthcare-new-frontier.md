@@ -7,7 +7,7 @@ slug: "blockchain-in-healthcare-new-frontier"
 author:
   name: "Emily Davis"
   title: "Lead Researcher - BlockLink"
-  image: "/assets/images/becky.jpg"
+  image: "/assets/images/avatar-erica-wyatt.jpg"
 ---
 
 ## Understanding the Basics of Blockchain in Healthcare

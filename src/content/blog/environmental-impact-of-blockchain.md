@@ -7,7 +7,7 @@ slug: "environmental-impact-of-blockchain"
 author:
   name: "John Smith"
   title: "Sr. Developer - BlockWorld"
-  image: "/assets/images/john.jpg"
+  image: "/assets/images/avatar-cameron-yang.jpg"
 ---
 
 ## Understanding the Environmental Impact
